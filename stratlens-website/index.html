@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StratLens — Geopolitical Intelligence Platform</title>
+  <meta name="description" content="StratLens aggregates geopolitical intelligence from 50+ public sources across 194+ countries, distilled into clear risk-tiered briefs." />
+
+  <!-- Canonical — domain: stratlens.site -->
+  <link rel="canonical" href="https://stratlens.site" />
+
+  <!-- Open Graph — stratlens.site -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="StratLens — Geopolitical Intelligence Platform" />
+  <meta property="og:description" content="194+ countries. 50+ public sources. Risk-tiered intelligence briefs, on demand." />
+  <meta property="og:url"         content="https://stratlens.site" />
+  <meta property="og:image"       content="https://stratlens.site/og-image.png" />
+  <meta property="og:site_name"   content="StratLens" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="StratLens — Geopolitical Intelligence Platform" />
+  <meta name="twitter:description" content="194+ countries. 50+ public sources. Risk-tiered intelligence briefs." />
+  <meta name="twitter:image"       content="https://stratlens.site/og-image.png" />
+
+  <!-- Google Fonts: Noto Sans Arabic for RTL support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">StratLens</a>
+    <ul class="nav-links">
+      <li><a href="#features" data-i18n="nav.features">Features</a></li>
+      <li><a href="#pricing"  data-i18n="nav.pricing">Pricing</a></li>
+      <li><a href="privacy.html" data-i18n="nav.privacy">Privacy</a></li>
+      <li><a href="terms.html"   data-i18n="nav.terms">Terms</a></li>
+      <li><a href="#cta" class="nav-cta" data-i18n="nav.joinWaitlist">Join Waitlist</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn" data-lang="ar" onclick="setLanguage('ar')">عربي</button>
+      <button class="lang-btn" data-lang="es" onclick="setLanguage('es')">ES</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <span class="hero-eyebrow" data-i18n="hero.eyebrow">Geopolitical Intelligence</span>
+    <h1 data-i18n="hero.headline">Know What's Moving the World</h1>
+    <p class="subtitle" data-i18n="hero.subtitle">
+      StratLens aggregates public intelligence from 50+ trusted sources across
+      194+ countries — risk-tiered, AI-distilled, and delivered to your device.
+    </p>
+
+    <!-- Stats: 194+ Countries / 50+ Sources / 100% Public / 5 Plans -->
+    <div class="stats-row">
+      <div class="stat-chip">
+        <span class="stat-num">194+</span>
+        <span class="stat-label" data-i18n="hero.stat1">Countries</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">50+</span>
+        <span class="stat-label" data-i18n="hero.stat2">Trusted Sources</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">100%</span>
+        <span class="stat-label" data-i18n="hero.stat3">Public Information</span>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-num">5</span>
+        <span class="stat-label" data-i18n="hero.stat4">Plan Tiers</span>
+      </div>
+    </div>
+
+    <p class="hero-tagline" data-i18n="hero.tagline">
+      Start with focused access. Upgrade when your global coverage needs expand.
+    </p>
+
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="joinWaitlist()" data-i18n="hero.joinWaitlist">Join the Waitlist</button>
+      <a href="#pricing" class="btn-secondary" data-i18n="hero.seePlans">See All Plans</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- ── Features ───────────────────────────────────────────────────────────── -->
+<section id="features">
+  <div class="container">
+    <h2 data-i18n="feat.title">Built for Intelligence Professionals</h2>
+    <p class="section-sub" data-i18n="feat.subtitle">Every feature engineered around speed, clarity, and actionable signal.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3 data-i18n="feat.f1.title">194+ Country Coverage</h3>
+        <p data-i18n="feat.f1.desc">From frontier markets to G7 capitals — every sovereign state tracked, risk-scored, and categorised.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3 data-i18n="feat.f2.title">Real-Time Risk Tiers</h3>
+        <p data-i18n="feat.f2.desc">Critical, High, Medium, Low, and Info tiers updated continuously. Know the severity before you read the brief.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3 data-i18n="feat.f3.title">AI-Distilled Briefs</h3>
+        <p data-i18n="feat.f3.desc">Claude-powered summaries strip noise and surface the signal — key actors, market implications, timeline.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3 data-i18n="feat.f4.title">Region Alerts</h3>
+        <p data-i18n="feat.f4.desc">Set your watched countries and topics. Get notified the moment a relevant event breaks, not hours later.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3 data-i18n="feat.f5.title">Market Signals</h3>
+        <p data-i18n="feat.f5.desc">Live commodity, equity, FX and energy data alongside geopolitical events — context and price in one view.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3 data-i18n="feat.f6.title">Public Sources Only</h3>
+        <p data-i18n="feat.f6.desc">100% open-source intelligence. No classified data, no grey-zone providers — fully compliant by design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- ── Pricing ─────────────────────────────────────────────────────────────── -->
+<section id="pricing">
+  <div class="container">
+    <h2 data-i18n="price.title">Simple, Transparent Pricing</h2>
+    <p class="section-sub" data-i18n="price.subtitle">Coverage scales with your needs. No hidden fees, no lock-in.</p>
+
+    <!-- Billing toggle -->
+    <div class="billing-toggle">
+      <span class="toggle-label" id="toggle-month-label" data-i18n="price.monthly">Monthly</span>
+      <button
+        class="toggle-track"
+        id="billing-track"
+        onclick="toggleBilling()"
+        aria-label="Toggle annual billing"
+        type="button"
+      >
+        <span class="toggle-thumb"></span>
+      </button>
+      <span class="toggle-label" id="toggle-annual-label">
+        <span data-i18n="price.annual">Annual</span> &nbsp;<span class="save-badge" data-i18n="price.save20">SAVE 20%</span>
+      </span>
+    </div>
+    <p class="billing-note" id="billing-global-note"></p>
+
+    <!-- 5-tier pricing grid -->
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="plan-card">
+        <div class="plan-name" data-i18n="price.free.name">Free</div>
+        <div class="plan-countries">3</div>
+        <div class="plan-countries-label" data-i18n="price.countries">Countries</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-val" data-monthly="0" data-annual="0">0</span>
+          <span class="price-period" data-i18n="price.perMonth">/month</span>
+        </div>
+        <div class="plan-billing-note"></div>
+        <ul class="plan-features">
+          <li>3 country watchlist</li>
+          <li>Daily digest (top 5 events)</li>
+          <li>Risk tier feed</li>
+          <li>Basic market snapshot</li>
+          <li>Community support</li>
+        </ul>
+        <button class="plan-btn plan-btn-free" data-i18n="price.btnFree">Get Started Free</button>
+      </div>
+
+      <!-- ESSENTIAL -->
+      <div class="plan-card">
+        <div class="plan-name" data-i18n="price.ess.name">Essential</div>
+        <div class="plan-countries">8</div>
+        <div class="plan-countries-label" data-i18n="price.countries">Countries</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-val" data-monthly="12" data-annual="10">12</span>
+          <span class="price-period" data-i18n="price.perMonth">/month</span>
+        </div>
+        <div class="plan-billing-note"></div>
+        <ul class="plan-features">
+          <li>8 country watchlist</li>
+          <li>Real-time event feed</li>
+          <li>AI summaries</li>
+          <li>Push alerts</li>
+          <li>Market data feed</li>
+          <li>Email support</li>
+        </ul>
+        <button class="plan-btn plan-btn-default" data-i18n="price.btnEss">Get Essential</button>
+      </div>
+
+      <!-- PROFESSIONAL — MOST POPULAR -->
+      <div class="plan-card popular">
+        <span class="plan-badge badge-popular" data-i18n="price.most">Most Popular</span>
+        <div class="plan-name" data-i18n="price.pro.name">Professional</div>
+        <div class="plan-countries text-teal">25</div>
+        <div class="plan-countries-label" data-i18n="price.countries">Countries</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-val" data-monthly="39" data-annual="31">39</span>
+          <span class="price-period" data-i18n="price.perMonth">/month</span>
+        </div>
+        <div class="plan-billing-note"></div>
+        <ul class="plan-features">
+          <li>25 country watchlist</li>
+          <li>Priority event feed</li>
+          <li>Deep-dive AI briefs</li>
+          <li>Multi-topic alerts</li>
+          <li>Risk scoring dashboard</li>
+          <li>API access (beta)</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="plan-btn plan-btn-popular" data-i18n="price.btnPro">Get Professional</button>
+      </div>
+
+      <!-- INTELLIGENCE — GLOBAL COVERAGE, purple -->
+      <div class="plan-card intelligence">
+        <span class="plan-badge badge-global" data-i18n="price.global">Global Coverage</span>
+        <div class="plan-name" data-i18n="price.int.name">Intelligence</div>
+        <div class="plan-countries text-purple">194+</div>
+        <div class="plan-countries-label" data-i18n="price.countries">Countries</div>
+        <div class="plan-price">
+          <span class="price-currency">$</span>
+          <span class="price-val" data-monthly="99" data-annual="79">99</span>
+          <span class="price-period" data-i18n="price.perMonth">/month</span>
+        </div>
+        <div class="plan-billing-note"></div>
+        <ul class="plan-features">
+          <li>All 194+ countries</li>
+          <li>Unlimited alerts</li>
+          <li>Full AI brief library</li>
+          <li>Region intelligence reports</li>
+          <li>Advanced risk analytics</li>
+          <li>Full API access</li>
+          <li>Dedicated support</li>
+        </ul>
+        <button class="plan-btn plan-btn-intelligence" data-i18n="price.btnInt">Get Intelligence</button>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="plan-card enterprise">
+        <div class="plan-name" data-i18n="price.ent.name">Enterprise</div>
+        <div class="plan-countries">∞</div>
+        <div class="plan-countries-label" data-i18n="price.unlimited">Unlimited</div>
+        <div class="plan-price">
+          <span class="price-val" style="font-size:1.4rem;color:var(--text-mid)" data-i18n="price.custom">Custom</span>
+        </div>
+        <div class="plan-billing-note"></div>
+        <ul class="plan-features">
+          <li>Unlimited everything</li>
+          <li>Custom data integrations</li>
+          <li>White-label option</li>
+          <li>SLA guarantee</li>
+          <li>Dedicated account manager</li>
+          <li>On-site briefings</li>
+          <li>Custom AI workflows</li>
+        </ul>
+        <a href="mailto:info@stratlens.site" class="plan-btn plan-btn-enterprise" style="display:block;text-align:center;line-height:normal;padding:12px;" data-i18n="price.btnEnt">
+          <!-- info@stratlens.site — PLACEHOLDER: must be configured before launch -->
+          Contact Us
+        </a>
+      </div>
+
+    </div><!-- /pricing-grid -->
+
+    <!-- Disclaimer -->
+    <p class="pricing-disclaimer" data-i18n="price.disclaimer">
+      StratLens provides public-information summaries for informational purposes only.
+      Not financial, investment, legal, or government advice.
+    </p>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- ── CTA Banner ─────────────────────────────────────────────────────────── -->
+<section id="cta">
+  <div class="container">
+    <h2 data-i18n="cta.title">Find Your Coverage Level</h2>
+    <p class="cta-sub" data-i18n="cta.subtitle">Start free and scale your intelligence footprint as your world expands.</p>
+
+    <!-- Plan ladder: Free → Essential → Professional → Intelligence → Enterprise -->
+    <div class="plan-ladder">
+      <div class="ladder-step">
+        <span class="ls-name">Free</span>
+        <span class="ls-price">$0</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step">
+        <span class="ls-name">Essential</span>
+        <span class="ls-price">$12</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step popular-step">
+        <span class="ls-name">Professional</span>
+        <span class="ls-price">$39</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step intel-step">
+        <span class="ls-name">Intelligence</span>
+        <span class="ls-price">$99</span>
+      </div>
+      <span class="ladder-arrow">→</span>
+      <div class="ladder-step">
+        <span class="ls-name">Enterprise</span>
+        <span class="ls-price">Custom</span>
+      </div>
+    </div>
+
+    <div class="cta-buttons">
+      <button class="btn-primary" onclick="joinWaitlist()" data-i18n="cta.join">Join the Waitlist</button>
+      <a href="#pricing" class="btn-secondary" data-i18n="cta.plans">See All Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <div class="brand-name">StratLens</div>
+      <div class="brand-tagline" data-i18n="foot.tagline">Intelligence · Perspective · Advantage</div>
+      <p class="brand-desc" data-i18n="foot.desc">
+        Geopolitical intelligence aggregated from public sources across 194+ countries.
+        Risk-tiered, AI-distilled, and designed for professionals who need clarity fast.
+      </p>
+      <a href="https://stratlens.site" class="brand-domain">stratlens.site</a>
+    </div>
+
+    <!-- Product -->
+    <div class="footer-col">
+      <h4 data-i18n="foot.product">Product</h4>
+      <ul>
+        <li><a href="#features" data-i18n="foot.features">Features</a></li>
+        <li><a href="#pricing"  data-i18n="foot.pricing">Pricing</a></li>
+        <li><a href="#cta"      data-i18n="foot.joinList">Join Waitlist</a></li>
+      </ul>
+    </div>
+
+    <!-- Legal -->
+    <div class="footer-col">
+      <h4 data-i18n="foot.legal">Legal</h4>
+      <ul>
+        <li><a href="privacy.html" data-i18n="foot.privacy">Privacy Policy</a></li>
+        <li><a href="terms.html"   data-i18n="foot.terms">Terms of Service</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <ul class="footer-emails">
+        <!-- Placeholder emails — must be configured before launch -->
+        <li><a href="mailto:info@stratlens.site">info@stratlens.site</a></li>
+        <li><a href="mailto:support@stratlens.site">support@stratlens.site</a></li>
+        <li><a href="mailto:legal@stratlens.site">legal@stratlens.site</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p data-i18n="foot.copyright">© 2025 StratLens · stratlens.site</p>
+    <div class="footer-legal-links">
+      <a href="privacy.html" data-i18n="foot.legalLink">Privacy</a>
+      <a href="terms.html"   data-i18n="foot.termsLink">Terms</a>
+      <!-- support@stratlens.site — PLACEHOLDER: must be configured before launch -->
+      <a href="mailto:support@stratlens.site" data-i18n="foot.support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

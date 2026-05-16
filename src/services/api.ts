@@ -1,0 +1,87 @@
+import { GeopoliticalEvent, Region, Alert, EventFilters, PaginatedResponse } from '../types';
+import { supabase } from './supabase';
+import { resolveBaseUrl, markStale } from './apiResolver';
+
+async function getAuthHeader(): Promise<Record<string, string>> {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const [baseUrl, authHeader] = await Promise.all([resolveBaseUrl(), getAuthHeader()]);
+  let res: Response;
+  try {
+    res = await fetch(`${baseUrl}${path}`, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...authHeader,
+        ...options.headers,
+      },
+    });
+  } catch (err) {
+    // TypeError = network-level failure (no connection, wrong IP, etc.)
+    // Mark stale so the next request re-probes all candidates.
+    if (err instanceof TypeError) markStale();
+    throw err;
+  }
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ message: res.statusText }));
+    throw new Error(body.message ?? `Request failed: ${res.status}`);
+  }
+  return res.json() as Promise<T>;
+}
+
+function buildQueryString(params: Record<string, unknown>): string {
+  const qs = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined || value === null) continue;
+    if (Array.isArray(value)) {
+      value.forEach(v => qs.append(key, String(v)));
+    } else {
+      qs.set(key, String(value));
+    }
+  }
+  const str = qs.toString();
+  return str ? `?${str}` : '';
+}
+
+export const apiService = {
+  getEvents(
+    params: { page: number; pageSize: number } & Partial<EventFilters>
+  ): Promise<PaginatedResponse<GeopoliticalEvent>> {
+    return request(`/api/events${buildQueryString(params)}`);
+  },
+
+  getEventById(id: string): Promise<GeopoliticalEvent> {
+    return request(`/api/events/${id}`);
+  },
+
+  toggleSaveEvent(id: string, isSaved: boolean): Promise<void> {
+    return request(`/api/events/${id}/save`, {
+      method: 'PATCH',
+      body: JSON.stringify({ isSaved }),
+    });
+  },
+
+  getRegions(): Promise<Region[]> {
+    return request('/api/regions');
+  },
+
+  getRegionByCode(code: string): Promise<Region> {
+    return request(`/api/regions/${code.toUpperCase()}`);
+  },
+
+  getAlerts(): Promise<Alert[]> {
+    return request('/api/alerts');
+  },
+
+  markAlertRead(alertId: string): Promise<void> {
+    return request(`/api/alerts/${alertId}/read`, { method: 'PATCH' });
+  },
+
+  getSavedEvents(): Promise<GeopoliticalEvent[]> {
+    return request('/api/events/saved');
+  },
+};
