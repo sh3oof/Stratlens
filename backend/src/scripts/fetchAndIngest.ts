@@ -161,15 +161,15 @@ async function processFeed(source: FeedSource, cutoff: Date): Promise<ProcessRes
 
   // ── 1. Fetch feed ─────────────────────────────────────────────────────────
 
-  let feed: Parser.Output<Record<string, unknown>>;
+  let feed: any;
   try {
-    feed = await parser.parseURL(source.url);
+    feed = await parser.parseURL(source.url) as any;
   } catch (e) {
     fail(`  [${source.name}] Feed fetch failed: ${(e as Error).message}`);
     return { saved: 0, skipped: 0, errors: 1 };
   }
 
-  const items = (feed.items ?? []).filter(item => {
+  const items = (feed.items ?? []).filter((item: any) => {
     const pub = item.pubDate || item.isoDate;
     if (!pub) return false;
     return new Date(pub) >= cutoff;
@@ -184,12 +184,12 @@ async function processFeed(source: FeedSource, cutoff: Date): Promise<ProcessRes
 
   // ── 2. Batch dedup check ──────────────────────────────────────────────────
 
-  const urls        = items.map(i => i.link ?? '').filter(Boolean);
+  const urls        = items.map((i: any) => i.link ?? '').filter(Boolean);
   const existingUrls = await getExistingUrls(urls);
 
   const cap      = source.maxItems ?? MAX_PER_SOURCE;
   const newItems = items
-    .filter(i => i.link && !existingUrls.has(i.link))
+    .filter((i: any) => i.link && !existingUrls.has(i.link))
     .slice(0, cap);
   const dupCount = items.length - newItems.length;
   if (dupCount > 0) skip(`  [${source.name}] ${dupCount} duplicate${dupCount === 1 ? '' : 's'} skipped`);

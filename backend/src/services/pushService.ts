@@ -43,7 +43,7 @@ export async function sendEventNotification(
   const messages: ExpoPushMessage[] = [];
   for (const { token } of targets) {
     if (!Expo.isExpoPushToken(token)) {
-      console.warn(`[push] Invalid Expo token, skipping: ${token.slice(0, 20)}…`);
+      console.warn(`[push] Invalid Expo token, skipping: ${(token as string).slice(0, 20)}…`);
       continue;
     }
     messages.push({

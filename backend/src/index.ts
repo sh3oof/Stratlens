@@ -13,7 +13,7 @@ import { authMiddleware } from './middleware/auth';
 import { pingSupabase } from './services/supabaseService';
 
 const app = express();
-const PORT = process.env.PORT ?? 3001;
+const PORT = parseInt(process.env.PORT || '3001', 10);
 
 app.use(cors({ origin: process.env.ALLOWED_ORIGINS?.split(',') ?? '*' }));
 app.use(express.json({ limit: '1mb' }));

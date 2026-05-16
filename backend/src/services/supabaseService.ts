@@ -177,7 +177,7 @@ export async function getEvents(
   const { data, error, count } = await query;
   if (error) throw new Error(`getEvents: ${error.message}`);
 
-  return { data: (data ?? []) as DbEvent[], count: count ?? 0 };
+  return { data: (data ?? []) as unknown as DbEvent[], count: count ?? 0 };
 }
 
 export async function getEventById(id: string): Promise<DbEvent> {
@@ -188,7 +188,7 @@ export async function getEventById(id: string): Promise<DbEvent> {
     .single();
 
   if (error) throw new Error(`getEventById: ${error.message}`);
-  return data as DbEvent;
+  return (data as unknown) as DbEvent;
 }
 
 // ─── Regions ─────────────────────────────────────────────────────────────────
