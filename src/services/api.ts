@@ -2,6 +2,16 @@ import { GeopoliticalEvent, Region, Alert, EventFilters, PaginatedResponse } fro
 import { supabase } from './supabase';
 import { resolveBaseUrl, markStale } from './apiResolver';
 
+// If the configured URL is a production https:// address, bypass the resolver
+// entirely and use it directly — no probing, no localhost fallback risk.
+const CONFIGURED_URL   = (process.env.EXPO_PUBLIC_API_BASE_URL ?? '').trim();
+const IS_HTTPS         = CONFIGURED_URL.startsWith('https://');
+
+async function getBaseUrl(): Promise<string> {
+  if (IS_HTTPS) return CONFIGURED_URL;
+  return resolveBaseUrl();
+}
+
 async function getAuthHeader(): Promise<Record<string, string>> {
   const { data } = await supabase.auth.getSession();
   const token = data.session?.access_token;
@@ -9,7 +19,10 @@ async function getAuthHeader(): Promise<Record<string, string>> {
 }
 
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
-  const [baseUrl, authHeader] = await Promise.all([resolveBaseUrl(), getAuthHeader()]);
+  const [baseUrl, authHeader] = await Promise.all([getBaseUrl(), getAuthHeader()]);
+
+  console.log(`[API] ${options.method ?? 'GET'} ${baseUrl}${path}`);
+
   let res: Response;
   try {
     res = await fetch(`${baseUrl}${path}`, {
@@ -21,11 +34,10 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
       },
     });
   } catch (err) {
-    // TypeError = network-level failure (no connection, wrong IP, etc.)
-    // Mark stale so the next request re-probes all candidates.
     if (err instanceof TypeError) markStale();
     throw err;
   }
+
   if (!res.ok) {
     const body = await res.json().catch(() => ({ message: res.statusText }));
     throw new Error(body.message ?? `Request failed: ${res.status}`);
