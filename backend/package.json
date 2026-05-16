@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "build": "echo 'No build step - using ts-node'",
+    "start": "ts-node --transpile-only src/index.ts",
     "lint": "tsc --noEmit",
     "enrich": "ts-node --transpile-only src/scripts/enrichEvents.ts",
     "ingest": "ts-node --transpile-only src/scripts/runIngestion.ts",
@@ -15,20 +15,20 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
     "@supabase/supabase-js": "^2.49.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.17",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "expo-server-sdk": "^3.15.0",
     "rss-parser": "^3.13.0",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3",
     "zod": "^3.24.4"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.3",
-    "@types/node": "^22.15.17",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
   }
 }
