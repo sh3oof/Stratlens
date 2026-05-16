@@ -11,6 +11,7 @@ import { watchlistRouter }  from './routes/watchlist';
 import { pushTokensRouter }  from './routes/pushTokens';
 import { authMiddleware } from './middleware/auth';
 import { pingSupabase } from './services/supabaseService';
+import { startScheduler } from './services/scheduler';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3001', 10);
@@ -54,6 +55,12 @@ app.use('/api/ai',        authMiddleware, aiRouter);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`StratLens API running on port ${PORT}`);
+
+  if (process.env.NODE_ENV === 'production') {
+    startScheduler();
+  } else {
+    console.log('Scheduler disabled in development');
+  }
 });
 
 export default app;
